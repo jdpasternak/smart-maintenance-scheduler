@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto, Roboto_Mono } from 'next/font/google';
 import './globals.css';
+import ErrorBoundary from '@/components/error-boundary';
 import Layout from '@/components/layout';
 
 const roboto = Roboto({
@@ -27,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
-        <Layout>{children}</Layout>
+        <ErrorBoundary>
+          <Layout>{children}</Layout>
+        </ErrorBoundary>
       </body>
     </html>
   );
