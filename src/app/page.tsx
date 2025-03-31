@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { DialogTitle } from "@radix-ui/react-dialog";
+import { DialogTitle } from '@radix-ui/react-dialog';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <div className="flex items-center flex-col w-full gap-5">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant={"default"}>Login</Button>
+              <Button variant={'default'}>Login</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogTitle>Login</DialogTitle>
@@ -21,10 +21,10 @@ export default function Home() {
         </div>
 
         <div className="flex items-center flex-col w-full gap-5">
-          <Button variant={"default"}>Default</Button>
-          <Button variant={"outline"}>Outline</Button>
-          <Button variant={"ghost"}>Ghost</Button>
-          <Button variant={"destructive"}>Destructive</Button>
+          <Button variant={'default'}>Default</Button>
+          <Button variant={'outline'}>Outline</Button>
+          <Button variant={'ghost'}>Ghost</Button>
+          <Button variant={'destructive'}>Destructive</Button>
         </div>
 
         <div className="flex items-center flex-col w-full gap-5">
@@ -32,9 +32,7 @@ export default function Home() {
             <CardHeader>
               <CardTitle>Dashboard</CardTitle>
             </CardHeader>
-            <CardContent>
-              Welcome to your admin portal
-            </CardContent>
+            <CardContent>Welcome to your admin portal</CardContent>
           </Card>
         </div>
 
@@ -50,6 +48,6 @@ export default function Home() {
           </Dialog>
         </div>
       </main>
-    </div >
+    </div>
   );
 }
