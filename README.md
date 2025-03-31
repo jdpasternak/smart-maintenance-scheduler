@@ -78,3 +78,5 @@ npm test           # Run test suite (if configured)
 This project is licensed under the MIT License.
 
 ---
+
+![CI](https://github.com/jdpasternak/smart-maintenance-scheduler/actions/workflows/ci.yml/badge.svg)
