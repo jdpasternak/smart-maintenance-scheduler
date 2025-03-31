@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build:prisma": "prisma generate && prisma migrate deploy",
+    "build": "npm run build:prisma && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
