@@ -3,6 +3,7 @@ import { Roboto, Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import ErrorBoundary from '@/components/error-boundary';
 import Layout from '@/components/layout';
+import { SessionProvider } from 'next-auth/react';
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -28,9 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
-        <ErrorBoundary>
-          <Layout>{children}</Layout>
-        </ErrorBoundary>
+        <SessionProvider>
+          <ErrorBoundary>
+            <Layout>{children}</Layout>
+          </ErrorBoundary>
+        </SessionProvider>
       </body>
     </html>
   );
