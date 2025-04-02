@@ -38,6 +38,23 @@ This project uses a modern, modular stack optimized for developer productivity, 
 | **Email Service**  | [Resend](https://resend.com)                                               | For sending alert emails for overdue maintenance                                          |
 | **Error Handling** | Custom Error Boundary + Logger (`lib/logger.ts`)                           | Catches client and server errors, logs contextfully                                       |
 
+## 🔐 Authentication
+
+This project uses [NextAuth.js](https://authjs.dev/) for authentication with session support and PostgreSQL-based persistence via the [Prisma Adapter](https://authjs.dev/reference/adapter/prisma).
+
+Currently, configuration only exists for [Google OAuth](https://developers.google.com/identity/protocols/oauth2).
+
+To enable authentication, the following environment variables must be set:
+
+```env
+AUTH_GOOGLE_ID=your-google-client-id
+AUTH_GOOGLE_SECRET=your-google-client-secret
+```
+
+Session data is stored in the PostgreSQL database. All secrets are stored securely in the .env file and never committed to version control.
+
+For full setup instructions, see the official [NextAuth.js docs](https://authjs.dev/guides/nextjs).
+
 ## 📦 Installation
 
 ```bash
