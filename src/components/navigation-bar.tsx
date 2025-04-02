@@ -22,44 +22,51 @@ export function NavigationBar() {
         </Link>
         <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  href="/machines"
-                  className={cn(
-                    'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
-                  )}
-                >
-                  Machines
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {status === 'authenticated' && (
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/machines"
+                    className={cn(
+                      'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
+                    )}
+                  >
+                    Machines
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            )}
 
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  href="/schedule"
-                  className={cn(
-                    'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
-                  )}
-                >
-                  Schedule
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {status === 'authenticated' && (
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/schedule"
+                    className={cn(
+                      'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
+                    )}
+                  >
+                    Schedule
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            )}
 
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  href="/history"
-                  className={cn(
-                    'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
-                  )}
-                >
-                  History
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {status === 'authenticated' && (
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/history"
+                    className={cn(
+                      'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
+                    )}
+                  >
+                    History
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            )}
+
             {status === 'loading' ? (
               <div className="w-24 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
             ) : status === 'authenticated' ? (
