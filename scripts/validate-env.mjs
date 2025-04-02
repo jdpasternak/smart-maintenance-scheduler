@@ -5,7 +5,7 @@ if (existsSync('.env')) {
   dotenv.config({ path: '.env' });
 }
 
-const requiredVars = ['AUTH_GOOGLE_ID', 'AUTH_GOOGLE_SECRET'];
+const requiredVars = ['DATABASE_URL', 'AUTH_SECRET', 'AUTH_GOOGLE_ID', 'AUTH_GOOGLE_SECRET'];
 
 const missing = requiredVars.filter(key => !process.env[key]);
 
