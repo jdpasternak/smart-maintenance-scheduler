@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Roboto, Roboto_Mono } from 'next/font/google';
 import './globals.css';
+import { SessionProvider } from 'next-auth/react';
 import ErrorBoundary from '@/components/error-boundary';
 import Layout from '@/components/layout';
-import { SessionProvider } from 'next-auth/react';
 
 const roboto = Roboto({
   variable: '--font-roboto',
