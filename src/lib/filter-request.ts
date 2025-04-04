@@ -1,13 +1,12 @@
 import { User } from '@prisma/client';
-import { UnauthenticatedRequestError } from './errors';
-import { NextAuthRequest } from './interfaces';
+import { Session } from 'next-auth';
+import { UnauthenticatedRequestError } from '@/lib/errors';
 
-export const filterRequest = (req: Request): User => {
-  const user = (req as NextAuthRequest).auth?.user as User | undefined;
+export const filter = (session: Session | null): Session | null => {
+  const user = session?.user as User | undefined;
 
   if (!user) {
     throw new UnauthenticatedRequestError();
   }
-
-  return user;
+  return session;
 };
