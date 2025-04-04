@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { MenuButton } from '@/components/ui/menu-button';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -13,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 export function NavigationBar() {
   const { data, status } = useSession();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="w-full bg-gray-100 dark:bg-gray-900 border-b px-4 py-3">
@@ -20,8 +23,15 @@ export function NavigationBar() {
         <Link href="/" className="text-lg font-semibold">
           Smart Maintenance
         </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
+        <MenuButton menuOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} />
+        <NavigationMenu
+          className={cn(
+            'md:flex md:items-center md:space-x-4',
+            menuOpen ? 'block' : 'hidden',
+            'absolute md:static top-13 right-0 w-full md:w-auto bg-gray-100 dark:bg-gray-900 md:bg-transparent z-10',
+          )}
+        >
+          <NavigationMenuList className="flex flex-col md:flex-row md:items-center">
             {status === 'authenticated' && (
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -103,7 +113,7 @@ export function NavigationBar() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/profile"
-                    className={cn('flex items-center justify-center rounded-full py-0')}
+                    className={cn('flex items-center justify-center rounded-full pb-2 md:py-0')}
                   >
                     <Avatar>
                       <AvatarImage src={data?.user?.image || ''} />

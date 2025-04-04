@@ -1,13 +1,18 @@
+import { Machine } from '@prisma/client';
 import { NextResponse } from 'next/server';
-import { logError } from '@/lib/logger';
+import { auth } from '@/lib/auth';
+import { filter } from '@/lib/filter-request';
+import { handleApiError } from '@/lib/handle-api-error';
 import { prisma } from '@/lib/prisma';
 
-export const GET = async () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const GET = async (req: Request) => {
   try {
-    const machineList = await prisma.machine.findMany();
-    return NextResponse.json(machineList);
+    const session = await auth();
+    filter(session);
+    const machineList: Machine[] = await prisma.machine.findMany();
+    return NextResponse.json(machineList, { status: 200 });
   } catch (error) {
-    logError('GET /api/machines failed', { error });
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return handleApiError(error);
   }
 };

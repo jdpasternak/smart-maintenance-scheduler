@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
-import { auth } from './auth';
+import { auth } from '@/lib/auth';
 
 type WithAuthProps = {
   children: ReactNode;
