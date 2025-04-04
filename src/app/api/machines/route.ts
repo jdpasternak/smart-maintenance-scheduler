@@ -1,16 +1,18 @@
 import { Machine } from '@prisma/client';
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { filterRequest } from '@/lib/filter-request';
+import { filter } from '@/lib/filter-request';
 import { handleApiError } from '@/lib/handle-api-error';
 import { prisma } from '@/lib/prisma';
 
-export const GET = auth(async (req: Request) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const GET = async (req: Request) => {
   try {
-    filterRequest(req);
+    const session = await auth();
+    filter(session);
     const machineList: Machine[] = await prisma.machine.findMany();
     return NextResponse.json(machineList, { status: 200 });
   } catch (error) {
     return handleApiError(error);
   }
-});
+};
