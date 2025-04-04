@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { UnauthenticatedRequestError, UnauthorizedRequestError } from './errors';
-import { logError } from './logger';
+import { UnauthenticatedRequestError, UnauthorizedRequestError } from '@/lib/errors';
+import { logError } from '@/lib/logger';
 
 export function handleApiError(error: unknown) {
   logError('[API ERROR]', { error });
