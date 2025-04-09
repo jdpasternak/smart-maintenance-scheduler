@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { MenuButton } from '@/components/ui/menu-button';
 import {
   NavigationMenu,
@@ -16,6 +17,8 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 export function NavigationBar() {
   const { data, status } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <header className="w-full bg-gray-100 dark:bg-gray-900 border-b px-4 py-3">
@@ -39,6 +42,7 @@ export function NavigationBar() {
                     href="/machines"
                     className={cn(
                       'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
+                      pathname.includes('machines') ? 'bg-gradient-to-t from-gray-200' : '',
                     )}
                   >
                     Machines
@@ -54,6 +58,7 @@ export function NavigationBar() {
                     href="/schedule"
                     className={cn(
                       'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
+                      pathname.includes('schedule') ? 'bg-gradient-to-t from-gray-200' : '',
                     )}
                   >
                     Schedule
@@ -69,6 +74,7 @@ export function NavigationBar() {
                     href="/history"
                     className={cn(
                       'px-4 py-2 hover:bg-muted rounded-md text-sm font-medium transition-colors',
+                      pathname.includes('history') ? 'bg-gradient-to-t from-gray-200' : '',
                     )}
                   >
                     History
