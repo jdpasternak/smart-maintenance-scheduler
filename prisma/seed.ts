@@ -5,9 +5,9 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log('🌱 Seeding database...');
-  console.log('🌱 Environment: ', process.env.NODE_ENV || 'local');
+  console.log('🌱 Environment:', process.env.APP_ENV || 'local');
 
-  if (!['local', 'dev', 'test'].includes(process.env.NODE_ENV || '')) {
+  if (!['local', 'dev', 'test'].includes(process.env.APP_ENV || '')) {
     console.error(`❌ Seeding is only allowed in development or test environments.`);
     process.exit(0);
   }
