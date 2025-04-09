@@ -8,7 +8,7 @@ async function main() {
 
   if (!['local', 'dev', 'test'].includes(process.env.NODE_ENV || '')) {
     console.error(`❌ Seeding is only allowed in development or test environments.`);
-    process.exit(1);
+    process.exit(0);
   }
 
   // Step 1: Seed Users
