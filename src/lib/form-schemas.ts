@@ -15,7 +15,10 @@ export const newMachineFormSchema = z
         z.literal('').transform(() => undefined),
       ])
       .optional(),
-    lastServiceDt: z.coerce.date().max(new Date(), 'Last service date must be before today').optional(),
+    lastServiceDt: z.coerce
+      .date()
+      .max(new Date(), 'Last service date must be before today')
+      .optional(),
     maintenanceIntervalValue: z
       .union([
         z.coerce.number().min(1, { message: 'Maintenance interval must be at least 1' }),
