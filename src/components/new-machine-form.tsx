@@ -34,7 +34,7 @@ export function NewMachineForm() {
       name: '',
       serialNumber: '',
       usageHours: undefined,
-      lastService: undefined,
+      lastServiceDt: undefined,
       maintenanceIntervalValue: undefined,
       maintenanceIntervalUnit: undefined,
     },
@@ -124,10 +124,10 @@ export function NewMachineForm() {
         {/* Last Service */}
         <FormField
           control={form.control}
-          name="lastService"
+          name="lastServiceDt"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Last Service</FormLabel>
+              <FormLabel>Last Service Date</FormLabel>
               <FormControl>
                 <Input
                   type="date"

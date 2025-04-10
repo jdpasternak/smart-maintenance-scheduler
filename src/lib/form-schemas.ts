@@ -3,8 +3,11 @@ import { z } from 'zod';
 
 export const newMachineFormSchema = z
   .object({
-    name: z.string().min(1, { message: 'Name is required' }),
-    serialNumber: z.string().optional(),
+    name: z
+      .string()
+      .min(1, { message: 'Name is required' })
+      .max(100, { message: 'Name is too long' }),
+    serialNumber: z.string().max(100, 'Serial number is too long').optional(),
     type: z.nativeEnum(MachineType).optional(),
     usageHours: z
       .union([
@@ -12,7 +15,7 @@ export const newMachineFormSchema = z
         z.literal('').transform(() => undefined),
       ])
       .optional(),
-    lastService: z.coerce.date().optional(),
+    lastServiceDt: z.coerce.date().max(new Date(), 'Last service date must be before today').optional(),
     maintenanceIntervalValue: z
       .union([
         z.coerce.number().min(1, { message: 'Maintenance interval must be at least 1' }),

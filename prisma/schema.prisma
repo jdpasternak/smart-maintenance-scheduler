@@ -19,7 +19,7 @@ model Machine {
   type MachineType?
   serialNumber String?
   usageHours Float @default(0)
-  lastService DateTime?
+  lastServiceDt DateTime?
   maintenanceIntervalValue Float?
   maintananceIntervalUnit MaintenanceIntervalUnit?
   createdAt DateTime @default(now())
