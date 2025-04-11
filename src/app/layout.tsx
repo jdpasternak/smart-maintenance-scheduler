@@ -4,6 +4,7 @@ import '@/app/globals.css';
 import { SessionProvider } from 'next-auth/react';
 import ErrorBoundary from '@/components/error-boundary';
 import Layout from '@/components/layout';
+import { Toaster } from '@/components/ui/sonner';
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Layout>{children}</Layout>
           </ErrorBoundary>
         </SessionProvider>
+        <Toaster />
       </body>
     </html>
   );

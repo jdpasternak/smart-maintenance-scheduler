@@ -2,7 +2,10 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MachineType, MaintenanceIntervalUnit } from '@prisma/client';
+import axios from 'axios';
+import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import {
@@ -39,8 +42,23 @@ export function NewMachineForm() {
     },
   });
 
-  const onSubmit = (data: NewMachineFormValues) => {
-    console.log(data);
+  const onSubmit = async (data: NewMachineFormValues) => {
+    try {
+      const response = await axios.post('/api/machines', data);
+      if (response.status !== 201) {
+        toast.error('Failed to create machine');
+        return;
+      }
+      toast.success('Machine created successfully');
+      form.reset();
+    } catch (error) {
+      console.error('Error creating machine:', error);
+      if (axios.isAxiosError(error)) {
+        toast.error(`Error: ${error.response?.data}`);
+      } else {
+        toast.error('An unexpected error occurred');
+      }
+    }
   };
 
   return (
