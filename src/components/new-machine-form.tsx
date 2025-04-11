@@ -35,7 +35,7 @@ export function NewMachineForm() {
       name: '',
       serialNumber: '',
       usageHours: 0,
-      lastServiceDt: undefined,
+      lastServiceDt: new Date(),
       maintenanceIntervalValue: 0,
       maintenanceIntervalUnit: undefined,
     },
@@ -102,7 +102,7 @@ export function NewMachineForm() {
         <InputFormField control={form.control} label='Usage Hours' name='usageHours' placeholder='Usage hours' type='number' />
 
         {/* Last Service Date */}
-        <DateFormField control={form.control} label='Last Service Date' name='lastServiceDt' />
+        <DateFormField control={form.control} label='Last Service Date' name='lastServiceDt' max={new Date().toISOString().split("T")[0]} />
 
         {/* Maintenance Interval Value */}
         <InputFormField control={form.control} label='Maintenance Interval' name='maintenanceIntervalValue' placeholder='Interval value' type='number' />

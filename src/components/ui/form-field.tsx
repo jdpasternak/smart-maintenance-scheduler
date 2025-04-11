@@ -9,10 +9,11 @@ type FormFieldProps = {
     label: string;
     placeholder?: string;
     type?: HTMLInputTypeAttribute;
+    max?: string | number | undefined;
 }
 
 export function DateFormField(props: FormFieldProps) {
-    const { control, name, label } = props;
+    const { control, name, label, max } = props;
     return (<FormField
         control={control}
         name={name}
@@ -22,6 +23,7 @@ export function DateFormField(props: FormFieldProps) {
                 <FormControl>
                     <Input
                         type="date"
+                        max={max}
                         value={field.value ? format(field.value, 'yyyy-MM-dd') : ''}
                         onChange={e => !!e.target.value ? field.onChange(new Date(e.target.value + "T00:00:00")) : field.onChange(null)}
                     />

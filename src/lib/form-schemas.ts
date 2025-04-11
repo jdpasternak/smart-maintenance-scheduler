@@ -17,7 +17,7 @@ export const newMachineFormSchema = z
       .optional(),
     lastServiceDt: z.coerce
       .date()
-      .max(new Date(), 'Last service date must be before today')
+      .max(new Date(new Date().setDate(new Date().getDate() + 1)), 'Last service date must be today or before')
       .optional(),
     maintenanceIntervalValue: z
       .union([
