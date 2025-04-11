@@ -23,7 +23,7 @@ export function DateFormField(props: FormFieldProps) {
                     <Input
                         type="date"
                         value={field.value ? format(field.value, 'yyyy-MM-dd') : ''}
-                        onChange={e => field.onChange(new Date(e.target.value + "T00:00:00"))}
+                        onChange={e => !!e.target.value ? field.onChange(new Date(e.target.value + "T00:00:00")) : field.onChange(null)}
                     />
                 </FormControl>
                 <FormMessage />
