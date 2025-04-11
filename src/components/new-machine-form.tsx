@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MachineType, MaintenanceIntervalUnit } from '@prisma/client';
-import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -14,7 +13,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -24,6 +22,7 @@ import {
 } from '@/components/ui/select';
 import { newMachineFormSchema } from '@/lib/form-schemas';
 import { MachineTypeLabels } from '@/lib/labels';
+import { DateFormField, InputFormField } from './ui/form-field';
 
 type NewMachineFormValues = z.infer<typeof newMachineFormSchema>;
 
@@ -51,19 +50,7 @@ export function NewMachineForm() {
         className="space-y-4 flex flex-col justify-center w-xs"
       >
         {/* Name */}
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Machine name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <InputFormField control={form.control} label='Name' name='name' placeholder='Machine name' />
 
         {/* Maintenance Interval Unit */}
         <FormField
@@ -92,68 +79,16 @@ export function NewMachineForm() {
         />
 
         {/* Serial Number */}
-        <FormField
-          control={form.control}
-          name="serialNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Serial Number</FormLabel>
-              <FormControl>
-                <Input placeholder="Serial number" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <InputFormField control={form.control} label='Serial Number' name='serialNumber' placeholder='Serial number' />
 
         {/* Usage Hours */}
-        <FormField
-          control={form.control}
-          name="usageHours"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Usage Hours</FormLabel>
-              <FormControl>
-                <Input type="number" placeholder="Usage hours" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <InputFormField control={form.control} label='Usage Hours' name='usageHours' placeholder='Usage hours' type='number' />
 
-        {/* Last Service */}
-        <FormField
-          control={form.control}
-          name="lastServiceDt"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Last Service Date</FormLabel>
-              <FormControl>
-                <Input
-                  type="date"
-                  value={field.value ? format(field.value, 'yyyy-MM-dd') : ''}
-                  onChange={e => field.onChange(new Date(e.target.value))}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {/* Last Service Date */}
+        <DateFormField control={form.control} label='Last Service Date' name='lastServiceDt' />
 
         {/* Maintenance Interval Value */}
-        <FormField
-          control={form.control}
-          name="maintenanceIntervalValue"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Maintenance Interval</FormLabel>
-              <FormControl>
-                <Input type="number" placeholder="Interval value" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <InputFormField control={form.control} label='Maintenance Interval' name='maintenanceIntervalValue' placeholder='Interval value' type='number' />
 
         {/* Maintenance Interval Unit */}
         <FormField
