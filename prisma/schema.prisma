@@ -21,7 +21,7 @@ model Machine {
   usageHours Float @default(0)
   lastServiceDt DateTime?
   maintenanceIntervalValue Float?
-  maintananceIntervalUnit MaintenanceIntervalUnit?
+  maintenanceIntervalUnit MaintenanceIntervalUnit?
   createdAt DateTime @default(now())
   updatedAt DateTime? @updatedAt
 }
