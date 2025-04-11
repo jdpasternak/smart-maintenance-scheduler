@@ -34,9 +34,9 @@ export function NewMachineForm() {
     defaultValues: {
       name: '',
       serialNumber: '',
-      usageHours: undefined,
+      usageHours: 0,
       lastServiceDt: undefined,
-      maintenanceIntervalValue: undefined,
+      maintenanceIntervalValue: 0,
       maintenanceIntervalUnit: undefined,
     },
   });
